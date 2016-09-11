@@ -12,12 +12,20 @@ Shop.prototype = {
     this.cart.splice(item)
   },
 
-  totalPrice:function(){
+  totalPrice: function(){
     var total = 0;
     for (var item of this.cart){
       total += item.price;
     }
     return total;
+  },
+
+  redeemVoucher: function(voucher){
+    var total = 0;
+    for (var item of this.cart){
+      total += item.price;
+    }
+    return total - voucher.discount;
   },
   
   // filteredAccounts: function(type){

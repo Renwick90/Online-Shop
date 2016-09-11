@@ -1,5 +1,6 @@
 var Shop = require('../shop');
 var Item = require('../item');
+var Voucher = require('../voucher');
 var assert = require('assert');
 
 describe('shop', function(){
@@ -38,7 +39,8 @@ describe('shop', function(){
     var voucher = new Voucher({number: 'A', discount: 5})
     shop.addItem(item1);
     shop.addItem(item2);
-    shop.redeemVoucher()
+    
+    assert.deepEqual(136, shop.redeemVoucher(voucher))
   });
   // it('find account by owner name', function(){
   //   var bank = new Bank();
