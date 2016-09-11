@@ -5,7 +5,12 @@ var Shop = function(){
 
 Shop.prototype = {
   addItem: function(item){
-    this.cart.push(item);
+    if(item.quantity >= 1){
+      this.cart.push(item);
+      item.quantity -= 1;
+    }else{
+      return "out of stock"
+    }
   },
 
   removeItem: function(item){
@@ -27,32 +32,6 @@ Shop.prototype = {
     }
     return total - voucher.discount;
   },
-  
-  // filteredAccounts: function(type){
-  //   if(!type) return this.accounts
-  //   var filteredAccounts = [];
-  //   for (var account of this.accounts) {
-  //     if(type === account.type)
-  //       filteredAccounts.push(account);
-  //   }
-  //   return filteredAccounts;
-  // },
-  // totalCash:function(type){
-  //   var total = 0;
-  //   for (var account of this.filteredAccounts(type)) {
-  //     total += account.amount;
-  //   }
-  //   return total;
-  // },
-  // accountAverage:function(){
-  //   return this.totalCash()/this.accounts.length;
-  // },
-  // payInterest(percentage){
-  //   var multiplier = 1 + (percentage/100)
-  //   for(var account of this.accounts){
-  //     account.amount = account.amount * multiplier
-  //   }
-  // }
 }
 
 

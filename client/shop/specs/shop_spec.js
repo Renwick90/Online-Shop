@@ -42,6 +42,20 @@ describe('shop', function(){
     
     assert.deepEqual(136, shop.redeemVoucher(voucher))
   });
+
+  it('should reduce item quantity when added to cart', function(){
+    var shop = new Shop();
+    var item = new Item({name: 'Almond Toe Court Shoes', color:  'Patent Black', category:'Women’s Footwear' , price: 99.00, quantity: 5 });
+    shop.addItem(item);
+    assert.deepEqual(4, item.quantity)
+  })
+
+  it('should display warning when out of stock', function(){
+    var shop = new Shop();
+    var item = new Item({name: 'Almond Toe Court Shoes', color:  'Patent Black', category:'Women’s Footwear' , price: 99.00, quantity: 0 });
+    
+    assert.deepEqual("out of stock", shop.addItem(item))
+  })
   // it('find account by owner name', function(){
   //   var bank = new Bank();
   //   var account = new Account({owner:'Jay',amount:50, type:'business'});
